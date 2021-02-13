@@ -1,5 +1,6 @@
 ﻿using RageVadersData;
 using RageVadersData.Physics2D.Collections;
+using UnityEngine;
 
 namespace Gameplay.Ship
 {
@@ -12,6 +13,12 @@ namespace Gameplay.Ship
 		[RVInject] protected RV2DAccelerations Accelerations;
 		[RVInject] protected RV2DPositions Positions;
 		[RVInject] protected RVInputs Inputs;
+
+		[Get] protected Transform MyTransform;
+
+		protected Vector3 TransformPosition => MyTransform.position;
+		protected Vector3 Position => Positions[InternalId].ToUnityVector();
+		protected Vector3 Velocity => Velocities[InternalId].ToUnityVector();
 
 		public virtual void Init(int internalId) => InternalId = internalId;
 	}

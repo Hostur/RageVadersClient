@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using RageVadersData;
 using ResourcesManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
@@ -36,23 +38,30 @@ public static class RVAssetsManager
 		}
 	}
 
-	public static async Task<T> Instantiate<T>(this Object whoIsAskingFor, AssetReference assetReference, Vector3 position, Quaternion rotation)
-		where T : Object
-	{
-		T result = await assetReference.InstantiateAsync().Task as T;
-		OnAssetReferenceLoaded(result);
+	//public static async Task<T> InstantiateAsync<T>(this Object whoIsAskingFor, AssetReference assetReference, Vector3 position, Quaternion rotation)
+	//	where T : Object
+	//{
+	//	T result = await assetReference.InstantiateAsync().Task as T;
+	//	OnAssetReferenceLoaded(result);
 
-		var asset = await _assets[result.name].GetAsset<T>(whoIsAskingFor).ConfigureAwait(true);
-		return await Addressables.InstantiateAsync(asset, position, rotation).Task as T;
+	//	var asset = await _assets[result.name].GetAsset<T>(whoIsAskingFor).ConfigureAwait(true);
+	//	return await Addressables.InstantiateAsync(asset, position, rotation).Task as T;
+	//}
+
+	public static IEnumerator LoadAsync<T>(this Object whoIsAskingFor, AssetReference assetReference, Action<T> callback) where T : Object
+	{
+		AsyncOperationHandle<T> handle = assetReference.LoadAssetAsync<T>();
+		yield return handle;
+		callback?.Invoke(handle.Result);
 	}
 
-	public static async Task<T> Load<T>(this Object whoIsAskingFor, AssetReference assetReference) where T : Object
-	{
-		T result = await assetReference.InstantiateAsync().Task as T;
-		OnAssetReferenceLoaded(result);
+	//public static async Task<T> Load<T>(this Object whoIsAskingFor, AssetReference assetReference) where T : Object
+	//{
+	//	T result = await assetReference.InstantiateAsync().Task as T;
+	//	OnAssetReferenceLoaded(result);
 
-		return await _assets[result.name].GetAsset<T>(whoIsAskingFor).ConfigureAwait(true);
-	}
+	//	return await _assets[result.name].GetAsset<T>(whoIsAskingFor).ConfigureAwait(true);
+	//}
 
 	public static async Task PreLoad<T>(this AssetLabelReference labelReference) where T : Object
 	{

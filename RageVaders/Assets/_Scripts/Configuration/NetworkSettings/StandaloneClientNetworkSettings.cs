@@ -19,5 +19,10 @@ namespace Configuration.NetworkSettings
 		public bool MockWebService { get; private set; } = false;
 		public string WebServiceAddress { get; private set; } = string.Empty;
 		public SetupType SetupType => SetupType.StandaloneClient;
+
+		public byte PlayerLives { get; private set; } = 3;
+		public SerializableVector2 StartingPlayerPosition { get; private set; } = new SerializableVector2(30, 2);
+		public float PlayerShipAcceleration { get; private set; } = 10;
+		public float PlayerShipMass { get; private set; } = 5;
 	}
 }

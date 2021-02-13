@@ -12,11 +12,15 @@ namespace Configuration.NetworkSettings
 		public int MapWidth { get; private set; } = 60;
 		public int MapHeight { get; private set; } = 30;
 		public bool ForwardPorts { get; private set; } = false;  // Used by IServerStarter in RVUnityModulesRunner
-		public bool PublishServer { get; private set; } = false; // Used by IServerStarter in RVUnityModulesRunner
+		public bool PublishServer { get; private set; } = true; // Used by IServerStarter in RVUnityModulesRunner
 		public int MillisecondsRequestsDelay { get; private set; } = 0;
 		public string ServerName { get; private set; } = "RV Server";
 		public bool MockWebService { get; private set; } = true;
 		public string WebServiceAddress { get; private set; } = string.Empty;
 		public SetupType SetupType => SetupType.LocalGameplay;
+		public byte PlayerLives { get; private set; } = 3;
+		public SerializableVector2 StartingPlayerPosition { get; private set; } = new SerializableVector2(30, 2);
+		public float PlayerShipAcceleration { get; private set; } = 10;
+		public float PlayerShipMass { get; private set; } = 5;
 	}
 }

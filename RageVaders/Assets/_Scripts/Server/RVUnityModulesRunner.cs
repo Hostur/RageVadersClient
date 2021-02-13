@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Client;
 using RageVadersData;
 using RageVadersModules;
 using UnityEngine;
@@ -72,7 +73,7 @@ namespace Server
 			//InternalStartTicking();
 			//RefreshButtons();
 			//SpawnRecords();
-			Task.Factory.StartNew(async () => await Start().ConfigureAwait(false));
+			//Task.Factory.StartNew(async () => await Start().ConfigureAwait(false));
 		}
 
 		private void OnSuccessFullInit()
@@ -82,6 +83,7 @@ namespace Server
 			InternalStartTicking();
 			RefreshButtons();
 			SpawnRecords();
+			Publish(new ModulesRunnerStartedEvent());
 		}
 
 		private async Task Start()

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Client;
+using Gameplay.Ship;
 using Gameplay.Views;
 using Localization;
 using RageVadersData;
@@ -33,6 +34,11 @@ public class RVClientAssemblyDefinition : RVAssemblyDefinition
 		builder.Register(c => NetworkSettings)
 			.As<IRVNetworkSettings>()
 			.Keyed<object>(typeof(IRVNetworkSettings).FullName)
+			.SingleInstance();
+
+		builder.Register(c => new SpawnedGameEntities(c.Resolve<IRVNetworkSettings>()))
+			.As<SpawnedGameEntities>()
+			.Keyed<object>(typeof(SpawnedGameEntities).FullName)
 			.SingleInstance();
 
 		builder.Register(c => new GameTranslator())
