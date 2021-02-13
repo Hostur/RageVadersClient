@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ModulesRunnerUI
+  m_EditorClassIdentifier: 
+  m_GroupName: ModulesRunnerUI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8567eb00dccb7f24995240ac1d75ea61
+  m_SerializeEntries:
+  - m_GUID: 11e3d102a51b3e1409ff67d202690d8b
+    m_Address: Assets/Textures/UI/SoundOff.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - modules_runner_ui
+    m_MainAsset: {fileID: 2800000, guid: 11e3d102a51b3e1409ff67d202690d8b, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: 11e3d102a51b3e1409ff67d202690d8b, type: 3}
+  - m_GUID: 4487209fdda91154da619301adb9e6c4
+    m_Address: Assets/Textures/UI/SounOn.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - modules_runner_ui
+    m_MainAsset: {fileID: 2800000, guid: 4487209fdda91154da619301adb9e6c4, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: 4487209fdda91154da619301adb9e6c4, type: 3}
+  - m_GUID: 6707ba99377107d46a8f396f7aa37bd9
+    m_Address: Assets/Textures/UI/Next.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - modules_runner_ui
+    m_MainAsset: {fileID: 2800000, guid: 6707ba99377107d46a8f396f7aa37bd9, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: 6707ba99377107d46a8f396f7aa37bd9, type: 3}
+  - m_GUID: a1bda28f797f71c4db09f6a0d4af4759
+    m_Address: Assets/Textures/UI/Pause.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - modules_runner_ui
+    m_MainAsset: {fileID: 2800000, guid: a1bda28f797f71c4db09f6a0d4af4759, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: a1bda28f797f71c4db09f6a0d4af4759, type: 3}
+  - m_GUID: d42cfe7bed8439c439378d1a7e76f4e3
+    m_Address: Assets/Textures/UI/Play.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - modules_runner_ui
+    m_MainAsset: {fileID: 2800000, guid: d42cfe7bed8439c439378d1a7e76f4e3, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: d42cfe7bed8439c439378d1a7e76f4e3, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: c1f42531653cc0c4b92023e7a02f2afb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 555df866b41115147ad20cca5ee19720, type: 2}
+    - {fileID: 11400000, guid: 27cf4589b83019149b0419d36dee0ac1, type: 2}

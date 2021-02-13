@@ -1,24 +1,23 @@
-﻿using RageVadersData;
+﻿using System;
+using RageVadersData;
 
 namespace Configuration.NetworkSettings
 {
 	public class StandaloneClientNetworkSettings : IRVNetworkSettings
 	{
 		public int FrameRate { get; set; } = 30;
-		public int ClientsCapacity { get; }
-		public int ServerAliveEntitiesCapacity { get; }
-		public int SingleRequestsQueueCapacity { get; }
-		public int DefaultServerPort { get; }
-		public int ChunkSize { get; }
-		public int BigChunkSize { get; }
-		public int MapWidth { get; }
-		public int MapHeight { get; }
-		public bool ForwardPorts { get; private set; } = false;  // Used by IServerStarter in RVModulesRunner
-		public bool PublishServer { get; private set; } = false; // Used by IServerStarter in RVModulesRunner
-		public int MillisecondsRequestsDelay { get; }
-		public string ServerName { get; } = "Template";
-		public bool MockWebService { get; } = true;
-		public string WebServiceAddress { get; } = string.Empty;
-		public SetupType SetupType { get; } = SetupType.StandaloneClient;
+		public int ClientsCapacity { get; private set; } = 2;
+		public int ServerAliveEntitiesCapacity { get; private set; } = 200;
+		public int SingleRequestsQueueCapacity { get; private set; } = 12;
+		public int DefaultServerPort { get; private set; } = 6331;
+		public int MapWidth { get; private set; } = 60;
+		public int MapHeight { get; private set; } = 30;
+		public bool ForwardPorts { get; private set; } = false;  // Used by IServerStarter in RVUnityModulesRunner
+		public bool PublishServer { get; private set; } = false; // Used by IServerStarter in RVUnityModulesRunner
+		public int MillisecondsRequestsDelay { get; private set; } = 0;
+		public string ServerName { get; private set; } = String.Empty;
+		public bool MockWebService { get; private set; } = false;
+		public string WebServiceAddress { get; private set; } = string.Empty;
+		public SetupType SetupType => SetupType.StandaloneClient;
 	}
 }

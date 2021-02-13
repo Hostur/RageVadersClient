@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Client;
+using Gameplay.Views;
+using Localization;
 using RageVadersData;
 using RageVadersData.Client;
 using RageVadersModules;
@@ -33,11 +35,18 @@ public class RVClientAssemblyDefinition : RVAssemblyDefinition
 			.Keyed<object>(typeof(IRVNetworkSettings).FullName)
 			.SingleInstance();
 
+		builder.Register(c => new GameTranslator())
+			.As<GameTranslator>()
+			.Keyed<object>(typeof(GameTranslator).FullName)
+			.SingleInstance();
+
 		RegisterViewModels(builder);
 	}
 
 	private void RegisterViewModels(ContainerBuilder builder)
 	{
-		
+		builder.Register(c => new MenuViewModel(c.Resolve<RVMainThreadActionsQueue>()))
+			.As<MenuViewModel>()
+			.Keyed<object>(typeof(MenuViewModel).FullName);
 	}
 }

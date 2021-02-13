@@ -28,6 +28,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8fd47ae98516c5543bebdb58e8034168, type: 2}
   - {fileID: 11400000, guid: b494970be3cf2584691348d4b79e6518, type: 2}
   - {fileID: 11400000, guid: 64cecb64d888629488d3411b3e34b163, type: 2}
+  - {fileID: 11400000, guid: ecd2e239ed1dc1d41b4122755d1f6fa3, type: 2}
+  - {fileID: 11400000, guid: 81c68a792371a0b4b9729a7b6d1d7f59, type: 2}
+  - {fileID: 11400000, guid: 781ee1a326525be419c039b69bfae19c, type: 2}
+  - {fileID: 11400000, guid: 1225b70453b9d3948b4c416355ac6e1a, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -71,6 +75,9 @@ MonoBehaviour:
     - default
     - ships
     - projectiles
+    - menu
+    - skybox
+    - modules_runner_ui
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: f4e5ecda56895444880fb958881e1a43, type: 2}

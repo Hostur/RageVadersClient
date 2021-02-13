@@ -178,6 +178,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _setup:
     SetupType: 0
+  _preloadAssetLabels:
+  - m_LabelString: ships
+  - m_LabelString: projectiles
+  - m_LabelString: skybox
+  - m_LabelString: modules_runner_ui
+  _mainMenuScene:
+    m_AssetGUID: 682a592f141ce59468bf728250384050
+    m_SubObjectName: 
 --- !u!4 &1053374133
 Transform:
   m_ObjectHideFlags: 0
