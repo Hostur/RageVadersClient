@@ -185,7 +185,8 @@ namespace Server
 
 		private void Tick()
 		{
-			OnNextFrame(_frameRate);
+			float time = 1F / _networkSettings.FrameRate;
+			OnNextFrame(time);
 		}
 	}
 }

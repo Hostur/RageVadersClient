@@ -12,6 +12,7 @@ namespace Gameplay.Ship
 
 		private void Update()
 		{
+			if (InternalId < 0) return;
 			Vector3 position = Position;
 			Vector3 transformPosition = TransformPosition;
 			float distance = Vector3.Distance(transformPosition, position);

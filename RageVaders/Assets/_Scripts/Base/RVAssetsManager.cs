@@ -48,11 +48,20 @@ public static class RVAssetsManager
 	//	return await Addressables.InstantiateAsync(asset, position, rotation).Task as T;
 	//}
 
-	public static IEnumerator LoadAsync<T>(this Object whoIsAskingFor, AssetReference assetReference, Action<T> callback) where T : Object
+	public static IEnumerator LoadAsync(this Object whoIsAskingFor, AssetReference assetReference,
+		Action<GameObject> callback)
 	{
-		AsyncOperationHandle<T> handle = assetReference.LoadAssetAsync<T>();
-		yield return handle;
-		callback?.Invoke(handle.Result);
+		Addressables.LoadAssetAsync<GameObject>(assetReference).Completed += op =>
+		{
+			if (op.Status == AsyncOperationStatus.Succeeded)
+			{
+				callback?.Invoke(op.Result);
+			}
+		};
+		yield return null;
+		//AsyncOperationHandle<GameObject> handle = assetReference.LoadAssetAsync<GameObject>();
+		//	yield return handle;
+		//	callback?.Invoke(handle.Result as T);
 	}
 
 	//public static async Task<T> Load<T>(this Object whoIsAskingFor, AssetReference assetReference) where T : Object

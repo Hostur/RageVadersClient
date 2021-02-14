@@ -26,16 +26,16 @@ namespace Gameplay
 			Vector3 position = serializablePosition.ToUnityVector();
 
 
-			StartCoroutine(this.LoadAsync<PhysicsBehaviour>(_playerAssetReference, OnAssetLoaded));
+			StartCoroutine(this.LoadAsync(_playerAssetReference, OnAssetLoaded));
 		}
 
-		private void OnAssetLoaded(PhysicsBehaviour behaviour)
+		private void OnAssetLoaded(GameObject obj)
 		{
 			SerializableVector2 serializablePosition = _positions[_clientNetworkData.MyId];
 			Vector3 position = serializablePosition.ToUnityVector();
 
-			var instance = Instantiate(behaviour, position, Quaternion.identity);
-			instance.Init(_clientNetworkData.MyId);
+			var instance = Instantiate(obj, position, new Quaternion(0, 190, 0, 0));
+			instance.GetComponent<PhysicsBehaviour>().Init(_clientNetworkData.MyId);
 			_spawnedGameEntities[_clientNetworkData.MyId] = instance.gameObject;
 		}
 	}
