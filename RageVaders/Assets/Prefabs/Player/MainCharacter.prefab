@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4500ea1e5f86c14688207823e800983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceSyncPositionThreshold: 3
-  _maxVelocityLerp: 1
-  _lerpSpeed: 5
+  _forceSyncPositionThreshold: 6
+  _maxVelocityLerp: 5
+  _lerpSpeed: 1
 --- !u!114 &-1923218127143265655
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ namespace Gameplay
 			SerializableVector2 serializablePosition = _positions[_clientNetworkData.MyId];
 			Vector3 position = serializablePosition.ToUnityVector();
 
-			var instance = Instantiate(obj, position, new Quaternion(0, 190, 0, 0));
+			var instance = Instantiate(obj, position, Quaternion.Euler(90, 180, 0));
 			instance.GetComponent<PhysicsBehaviour>().Init(_clientNetworkData.MyId);
 			_spawnedGameEntities[_clientNetworkData.MyId] = instance.gameObject;
 		}

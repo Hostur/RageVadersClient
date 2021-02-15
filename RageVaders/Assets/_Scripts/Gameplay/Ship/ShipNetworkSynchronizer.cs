@@ -21,15 +21,20 @@ namespace Gameplay.Ship
 			{
 				MyTransform.position = Position;
 			}
-			else if (distance >= _maxVelocityLerp)
-			{
-				// Lerp from transform position towards velocity.
-				MyTransform.position = Vector3.Lerp(transformPosition, transformPosition + Velocity, _lerpSpeed);
-			}
-			else
-			{
-				MyTransform.position = Vector3.Lerp(transformPosition, Position, _lerpSpeed);
-			}
+
+
+			// Try to move into network position + velocity to reduce jittering.
+			MyTransform.position = Vector3.Lerp(transformPosition, position + (Velocity * 3), (1 + distance) + 20 * Time.deltaTime);
+
+			//else if (distance >= _maxVelocityLerp)
+			//{
+			//	// Lerp from transform position towards velocity.
+			//	MyTransform.position = Vector3.Lerp(transformPosition, transformPosition + Velocity, _lerpSpeed);
+			//}
+			//else
+			//{
+			//	MyTransform.position = Vector3.Lerp(transformPosition, Position, _lerpSpeed);
+			//}
 		}
 	}
 }
