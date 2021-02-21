@@ -24,5 +24,6 @@ namespace Configuration.NetworkSettings
 		public SerializableVector2 StartingPlayerPosition { get; private set; } = new SerializableVector2(30, 2);
 		public float PlayerShipAcceleration { get; private set; } = 10;
 		public float PlayerShipMass { get; private set; } = 5;
+		public float ShootingCooldown { get; private set; } = 5f;
 	}
 }
