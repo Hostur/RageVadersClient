@@ -18,8 +18,6 @@ namespace Gameplay.Ship
 			_input.SetRight(isRight);
 			_input.SetShooting(Input.GetKey(KeyCode.Space));
 
-			this.Log($"Input is Left: {isLeft} / {_input.IsLeft()}");
-			this.Log($"Input is Right: {isRight} / {_input.IsRight()}");
 			PrepareRequest();
 
 

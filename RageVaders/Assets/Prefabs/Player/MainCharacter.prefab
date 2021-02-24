@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceSyncPositionThreshold: 6
   _maxVelocityLerp: 5
-  _lerpSpeed: 1
+  _lerpSpeed: 2.03
 --- !u!114 &-1923218127143265655
 MonoBehaviour:
   m_ObjectHideFlags: 0

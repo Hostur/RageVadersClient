@@ -23,5 +23,6 @@ namespace Configuration.NetworkSettings
 		public float PlayerShipAcceleration { get; private set; } = 10;
 		public float PlayerShipMass { get; private set; } = 5;
 		public float ShootingCooldown { get; private set; } = 5f;
+		public float ShootsSpeed => 14;
 	}
 }

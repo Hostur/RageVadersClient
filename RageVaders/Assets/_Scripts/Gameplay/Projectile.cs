@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RageVadersData;
+using UnityEngine;
 #pragma warning disable 649
 
 namespace Gameplay
@@ -9,9 +10,9 @@ namespace Gameplay
 		[Get] private Transform _transform;
 		private Vector3 _destination;
 
-		public void SetDestination(Vector2 destination)
+		public void SetDestination(SerializableVector2 destination)
 		{
-			_destination = destination;
+			_destination = destination.ToUnityVector();
 		}
 
 		private void Update()

@@ -24,7 +24,7 @@ namespace Gameplay.Ship
 
 
 			// Try to move into network position + velocity to reduce jittering.
-			MyTransform.position = Vector3.Lerp(transformPosition, position + (Velocity * 3), (1 + distance) + 20 * Time.deltaTime);
+			MyTransform.position = Vector3.Lerp(transformPosition, position /*+ (Velocity * 3)*/, (1 + distance) + 20 * Time.deltaTime);
 
 			//else if (distance >= _maxVelocityLerp)
 			//{
