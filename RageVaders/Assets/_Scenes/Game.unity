@@ -869,6 +869,22 @@ MonoBehaviour:
     m_AssetGUID: f157bb8f3502b7c47be2cd527415a4f6
     m_SubObjectName: 
     m_SubObjectType: 
+  _hostileShips:
+  - WaveVisualStyle: 0
+    AssetReference:
+      m_AssetGUID: 50ca69c415a290c4399f65d420edbdba
+      m_SubObjectName: 
+      m_SubObjectType: 
+  - WaveVisualStyle: 1
+    AssetReference:
+      m_AssetGUID: cb8cab7eab0d48e4287fa060fcab3163
+      m_SubObjectName: 
+      m_SubObjectType: 
+  - WaveVisualStyle: 2
+    AssetReference:
+      m_AssetGUID: 09c16aee2fce81544951887883101b54
+      m_SubObjectName: 
+      m_SubObjectType: 
 --- !u!1 &831832012
 GameObject:
   m_ObjectHideFlags: 0

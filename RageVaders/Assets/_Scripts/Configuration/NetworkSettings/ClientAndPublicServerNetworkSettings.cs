@@ -25,5 +25,8 @@ namespace Configuration.NetworkSettings
 
 		public float ShootingCooldown => 5f;
 		public float ShootsSpeed => 14;
+
+		public int WaveUpdatesFrequency => 120;
+		public byte EntitiesPerWave => 16;
 	}
 }

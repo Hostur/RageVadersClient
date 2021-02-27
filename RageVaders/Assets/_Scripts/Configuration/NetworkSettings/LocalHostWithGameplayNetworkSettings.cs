@@ -24,5 +24,7 @@ namespace Configuration.NetworkSettings
 		public float PlayerShipMass { get; private set; } = 5;
 		public float ShootingCooldown { get; private set; } = 5f;
 		public float ShootsSpeed => 14;
+		public int WaveUpdatesFrequency => 120;
+		public byte EntitiesPerWave => 16;
 	}
 }
