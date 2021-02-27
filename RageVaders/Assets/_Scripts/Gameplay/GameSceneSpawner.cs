@@ -25,7 +25,7 @@ namespace Gameplay
 		[SerializeField] private HostileShipAssetReference[] _hostileShips;
 
 		[RVRegisterEventHandler(typeof(ClientConfirmationSuccessEvent))]
-		private async void OnClientConfirmationSuccessEvent(object sender, EventArgs arg)
+		private void OnClientConfirmationSuccessEvent(object sender, EventArgs arg)
 		{
 			this.Log("OnClientConfirmationSuccessEvent");
 			StartCoroutine(this.LoadAsync(_playerAssetReference, OnClientAssetLoaded));
