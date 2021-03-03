@@ -11,7 +11,7 @@ namespace Gameplay
 {
 	public class ProjectilesSpawner : RVBehaviour
 	{
-		[RVInject] private RVClientShoots _clientShoots;
+		[RVInject] private RVClientShoots _shoots;
 		[RVInject] private IRVNetworkSettings _networkSettings;
 		[SerializeField] private AssetReference _projectile;
 		//[SerializeField] private Projectile[] _projectiles;
@@ -50,6 +50,42 @@ namespace Gameplay
 			var projectileComponent = instance.GetComponent<Projectile>();
 			projectileComponent.Init(shoot.UniqueShootId);
 			_projectiles.Add(shoot.UniqueShootId, projectileComponent);
+		}
+
+		[RVRegisterEventHandler(typeof(ShootRequestEvent))]
+		private void OnShootRequestEvent(object sender, EventArgs arg)
+		{
+			var shoots = (arg as ShootRequestEvent).Shoots;
+			for (int i = 0; i < shoots.Length; i++)
+			{
+				var shoot = shoots[i];
+				this.Log($"{shoot.UniqueShootId}/{shoot.IsEmpty}", LogLevel.Error);
+
+				if (_shoots.Shoots.ContainsKey(shoot.UniqueShootId))
+				{
+					//this.Log($"{shoot.UniqueShootId}", LogLevel.Error);
+					if (shoot.IsEmpty)
+					{
+						this.Log($"{shoot.UniqueShootId} client collided.", LogLevel.Error);
+						OnDestroyClientShootEvent(this, new DestroyClientShootEvent(shoot));
+						_shoots.Shoots.Remove(shoot.UniqueShootId);
+					}
+					else
+					{
+						// Position sync
+						_shoots.Shoots[shoot.UniqueShootId] = shoot;
+					}
+				}
+				else
+				{
+					//this.Log($"{shoot.UniqueShootId}", LogLevel.Warning);
+					if (!shoot.IsEmpty)
+					{
+						_shoots.Shoots.Add(shoot.UniqueShootId, shoot);
+						OnSpawnClientShootEvent(this, new SpawnClientShootEvent(shoot));
+					}
+				}
+			}
 		}
 	}
 }
