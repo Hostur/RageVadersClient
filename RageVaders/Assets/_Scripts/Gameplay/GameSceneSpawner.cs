@@ -51,6 +51,14 @@ namespace Gameplay
 			StartCoroutine(this.LoadAsync(reference, x => OnHostileShopAssetLoaded(e.Request.WaveVisualStyle, e.Request.Ships, x)));
 		}
 
+		[RVRegisterEventHandler(typeof(DestroyEntityRequestEvent))]
+		private void OnDestroyEntityRequestEvent(object sender, EventArgs arg)
+		{
+			this.Log("OnDestroyEntityRequestEvent");
+			DestroyEntityRequestEvent e = arg as DestroyEntityRequestEvent;
+			Destroy(_spawnedGameEntities[e.EntityId]);
+		}
+
 		private void OnHostileShopAssetLoaded(WaveVisualStyle visualStyle, RVHostileShip[] hostileShips, GameObject obj)
 		{
 			for (int i = 0; i < hostileShips.Length; i++)

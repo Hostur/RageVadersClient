@@ -94,4 +94,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceSyncPositionThreshold: 6
   _maxVelocityLerp: 5
-  _lerpSpeed: 2
+  _lerpSpeed: 1

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using RageVadersData;
 using RageVadersData.Client;
 using UnityEngine;
@@ -13,13 +14,14 @@ namespace Gameplay
 		[RVInject] private RVClientShoots _clientShoots;
 		[RVInject] private IRVNetworkSettings _networkSettings;
 		[SerializeField] private AssetReference _projectile;
-		[SerializeField] private Projectile[] _projectiles;
-		
+		//[SerializeField] private Projectile[] _projectiles;
+		private Dictionary<int, Projectile> _projectiles;
 
 		protected override void OnAwake()
 		{
 			base.OnAwake();
-			_projectiles = new Projectile[_clientShoots.Shoots.Length];
+			//_projectiles = new Projectile[_clientShoots.Shoots.Length];
+			_projectiles = new Dictionary<int, Projectile>(10);
 		}
 
 		[RVRegisterEventHandler(typeof(SpawnClientShootEvent))]
@@ -32,27 +34,22 @@ namespace Gameplay
 		[RVRegisterEventHandler(typeof(DestroyClientShootEvent))]
 		private void OnDestroyClientShootEvent(object sender, EventArgs arg)
 		{
+			this.Log("Trying to destroy shoot.");
 			DestroyClientShootEvent e = arg as DestroyClientShootEvent;
-			Destroy(_projectiles[e.Shoot.InternalId].gameObject);
-			_projectiles[e.Shoot.InternalId] = null;
+			Destroy(_projectiles[e.Shoot.UniqueShootId].gameObject);
+			//_clientShoots.Shoots[e.Shoot.InternalId] = new RVShoot();
+			_projectiles.Remove(e.Shoot.UniqueShootId);
 		}
 
 
 		private void OnProjectileLoaded(RVShoot shoot, GameObject projectile)
 		{
 			Quaternion rotation = Quaternion.Euler(shoot.InternalId < _networkSettings.ClientsCapacity ? 90 : -90, 0, 0);
-			var instance = Instantiate(projectile, shoot.Position.ToUnityVector(), rotation);
-			_projectiles[shoot.InternalId] = instance.GetComponent<Projectile>();
-		}
 
-		private void Update()
-		{
-			for (int i = 0; i < _clientShoots.Shoots.Length; i++)
-			{
-				var shoot = _clientShoots.Shoots[i];
-				if(shoot.IsEmpty) continue;
-				_projectiles[shoot.InternalId]?.SetDestination(shoot.Position + shoot.Velocity);
-			}
+			var instance = Instantiate(projectile, shoot.Position.ToUnityVector(), rotation);
+			var projectileComponent = instance.GetComponent<Projectile>();
+			projectileComponent.Init(shoot.UniqueShootId);
+			_projectiles.Add(shoot.UniqueShootId, projectileComponent);
 		}
 	}
 }
