@@ -60,7 +60,7 @@ namespace Gameplay
 			{
 				var shoot = shoots[i];
 				this.Log($"{shoot.UniqueShootId}/{shoot.IsEmpty}", LogLevel.Error);
-
+				
 				if (_shoots.Shoots.ContainsKey(shoot.UniqueShootId))
 				{
 					//this.Log($"{shoot.UniqueShootId}", LogLevel.Error);

@@ -22,9 +22,12 @@ namespace Configuration.NetworkSettings
 		public SerializableVector2 StartingPlayerPosition { get; private set; } = new SerializableVector2(30, 2);
 		public float PlayerShipAcceleration { get; private set; } = 4;
 		public float PlayerShipMass { get; private set; } = 3;
-		public float ShootingCooldown { get; private set; } = 3f;
-		public float ShootsSpeed => 8;
+		public float ShootingCooldown { get; private set; } = 1.2f;
+		public float ShootsSpeed => 12;
 		public int WaveUpdatesFrequency => 120;
 		public byte EntitiesPerWave => 16;
+		public byte WaveVerticalMovementFrequency => 1;
+		public byte WaveHorizontalMovementFrequency => 10;
+		public byte IntangibleFramesAfterPlayerDead => 90;
 	}
 }

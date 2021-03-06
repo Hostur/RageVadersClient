@@ -53,6 +53,13 @@ public class RVClientAssemblyDefinition : RVAssemblyDefinition
 	{
 		builder.Register(c => new MenuViewModel(c.Resolve<RVMainThreadActionsQueue>()))
 			.As<MenuViewModel>()
-			.Keyed<object>(typeof(MenuViewModel).FullName);
+			.Keyed<object>(typeof(MenuViewModel).FullName)
+			.InstancePerDependency();
+
+		builder.Register(c => new PlayerViewModel(
+				c.Resolve<RVPlayersData>()))
+			.As<PlayerViewModel>()
+			.Keyed<object>(typeof(PlayerViewModel).FullName)
+			.InstancePerDependency();
 	}
 }

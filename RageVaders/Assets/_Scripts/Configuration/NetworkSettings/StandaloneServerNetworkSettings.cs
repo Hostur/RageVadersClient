@@ -27,5 +27,8 @@ namespace Configuration.NetworkSettings
 		public float ShootsSpeed => 14;
 		public int WaveUpdatesFrequency => 120;
 		public byte EntitiesPerWave => 16;
+		public byte WaveVerticalMovementFrequency => 1;
+		public byte WaveHorizontalMovementFrequency => 2;
+		public byte IntangibleFramesAfterPlayerDead => 90;
 	}
 }
