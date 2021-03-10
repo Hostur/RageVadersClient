@@ -59,14 +59,12 @@ namespace Gameplay
 			for (int i = 0; i < shoots.Length; i++)
 			{
 				var shoot = shoots[i];
-				this.Log($"{shoot.UniqueShootId}/{shoot.IsEmpty}", LogLevel.Error);
-				
+
 				if (_shoots.Shoots.ContainsKey(shoot.UniqueShootId))
 				{
 					//this.Log($"{shoot.UniqueShootId}", LogLevel.Error);
 					if (shoot.IsEmpty)
 					{
-						this.Log($"{shoot.UniqueShootId} client collided.", LogLevel.Error);
 						OnDestroyClientShootEvent(this, new DestroyClientShootEvent(shoot));
 						_shoots.Shoots.Remove(shoot.UniqueShootId);
 					}

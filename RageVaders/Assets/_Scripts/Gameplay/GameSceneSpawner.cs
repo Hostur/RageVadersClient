@@ -3,6 +3,7 @@ using System.Linq;
 using Gameplay.Ship;
 using RageVadersData;
 using RageVadersData.Client;
+using RageVadersModules.RV2DPhysics.Resolvers;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 #pragma warning disable 649
@@ -27,7 +28,6 @@ namespace Gameplay
 		[RVRegisterEventHandler(typeof(ClientConfirmationSuccessEvent))]
 		private void OnClientConfirmationSuccessEvent(object sender, EventArgs arg)
 		{
-			this.Log("OnClientConfirmationSuccessEvent");
 			StartCoroutine(this.LoadAsync(_playerAssetReference, OnClientAssetLoaded));
 		}
 
@@ -44,7 +44,6 @@ namespace Gameplay
 		[RVRegisterEventHandler(typeof(WaveSpawnedRequestEvent))]
 		private void OnWaveSpawnedRequestEvent(object sender, EventArgs arg)
 		{
-			this.Log("OnWaveSpawnedRequestEvent");
 			WaveSpawnedRequestEvent e = arg as WaveSpawnedRequestEvent;
 			AssetReference reference = _hostileShips.FirstOrDefault(s => s.WaveVisualStyle == e.Request.WaveVisualStyle).AssetReference;
 
@@ -54,7 +53,6 @@ namespace Gameplay
 		[RVRegisterEventHandler(typeof(DestroyEntityRequestEvent))]
 		private void OnDestroyEntityRequestEvent(object sender, EventArgs arg)
 		{
-			this.Log("OnDestroyEntityRequestEvent");
 			DestroyEntityRequestEvent e = arg as DestroyEntityRequestEvent;
 			Destroy(_spawnedGameEntities[e.EntityId]);
 		}

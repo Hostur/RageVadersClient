@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: LanguageDictionary
   m_EditorClassIdentifier: 
   Entities:
+  - Tag: Wave
+    English: Wave {0}
+    Polish: Fala {0}
+  - Tag: POINTS
+    English: Points
+    Polish: Punkty
+  - Tag: PLAY
+    English: Play
+    Polish: Graj
   - Tag: EXIT
     English: Exit
     Polish: "Wyj\u015Bcie"
@@ -94,3 +103,6 @@ MonoBehaviour:
   - Tag: SECURE_RECOMENDATION
     English: Please consider securing your account
     Polish: "Prosimy rozwa\u017C zabezpieczenie swojego konta"
+  - Tag: GAME_OVER
+    English: Game Over
+    Polish: "Przegra\u0142e\u015B"

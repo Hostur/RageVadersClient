@@ -57,7 +57,8 @@ public class RVClientAssemblyDefinition : RVAssemblyDefinition
 			.InstancePerDependency();
 
 		builder.Register(c => new PlayerViewModel(
-				c.Resolve<RVPlayersData>()))
+				c.Resolve<RVClientPlayersData>(),
+				c.Resolve<RVClientNetworkData>()))
 			.As<PlayerViewModel>()
 			.Keyed<object>(typeof(PlayerViewModel).FullName)
 			.InstancePerDependency();

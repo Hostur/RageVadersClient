@@ -20,7 +20,6 @@ namespace Gameplay.Ship
 
 			PrepareRequest();
 
-
 			_outgoingClientRequests.EnqueueUdp(ref _request);
 		}
 

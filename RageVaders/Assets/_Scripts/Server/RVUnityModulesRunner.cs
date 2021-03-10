@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Client;
 using RageVadersData;
+using RageVadersData.Client;
 using RageVadersModules;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +16,7 @@ namespace Server
 		[RVInject] private RVModulesRunner _modulesRunner;
 		[RVInject] private IRVNetworkSettings _networkSettings;
 		[RVInject] private RVMainThreadActionsQueue _mainThreadActionsQueue;
+		[RVInject] private RVClientNetworkData _clientNetworkData;
 		[SerializeField] private Color _activeColor;
 		[SerializeField] private Color _inactiveColor;
 		[SerializeField] private Image _background;
@@ -187,6 +190,16 @@ namespace Server
 		{
 			float time = 1F / _networkSettings.FrameRate;
 			OnNextFrame(time);
+		}
+
+		[RVRegisterEventHandler(typeof(GameOverEvent))]
+		private void OnGameOverEvent(object sender, EventArgs arg)
+		{
+			GameOverEvent e = arg as GameOverEvent;
+			if (e.InternalId == _clientNetworkData.MyId)
+			{
+				OnPauseButton();
+			}
 		}
 	}
 }
