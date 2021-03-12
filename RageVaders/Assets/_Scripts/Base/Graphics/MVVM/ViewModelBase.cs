@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading.Tasks;
 using RageVadersData;
 
 namespace Graphics.MVVM
@@ -23,6 +24,11 @@ namespace Graphics.MVVM
       if (_initialized) return;
       this.SubscribeMyEventHandlers();
       _initialized = true;
+    }
+
+    public virtual async Task PostInitializeAsync()
+    {
+
     }
 
     ~ViewModelBase()

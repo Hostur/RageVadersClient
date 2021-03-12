@@ -5,7 +5,9 @@ using Gameplay.Views;
 using Localization;
 using RageVadersData;
 using RageVadersData.Client;
+using RageVadersData.WebService;
 using RageVadersModules;
+using ResourcesManagement;
 
 public class RVClientAssemblyDefinition : RVAssemblyDefinition
 {
@@ -46,6 +48,17 @@ public class RVClientAssemblyDefinition : RVAssemblyDefinition
 			.Keyed<object>(typeof(GameTranslator).FullName)
 			.SingleInstance();
 
+		builder.Register(c => new ClientDataStorageAccessor(c.Resolve<IRVNetworkSettings>()))
+			.As<IDataStorageAccessor>()
+			.SingleInstance();
+
+		builder.Register(c => new StandaloneDataStorage(c.Resolve<IDataStorageAccessor>()))
+			.As<StandaloneDataStorage>()
+			.As<IDataStorage>()
+			.Keyed<object>(typeof(IDataStorage).FullName)
+			.Keyed<object>(typeof(StandaloneDataStorage).FullName)
+			.SingleInstance();
+
 		RegisterViewModels(builder);
 	}
 
@@ -61,6 +74,11 @@ public class RVClientAssemblyDefinition : RVAssemblyDefinition
 				c.Resolve<RVClientNetworkData>()))
 			.As<PlayerViewModel>()
 			.Keyed<object>(typeof(PlayerViewModel).FullName)
+			.InstancePerDependency();
+
+		builder.Register(c => new GameOverViewModel(c.Resolve<IRVWebServiceProvider>()))
+			.As<GameOverViewModel>()
+			.Keyed<object>(typeof(GameOverViewModel).FullName)
 			.InstancePerDependency();
 	}
 }

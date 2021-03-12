@@ -17,6 +17,8 @@ namespace Server
 		[RVInject] private IRVNetworkSettings _networkSettings;
 		[RVInject] private RVMainThreadActionsQueue _mainThreadActionsQueue;
 		[RVInject] private RVClientNetworkData _clientNetworkData;
+		[Get] private CanvasScaler _canvasScaler;
+		[Get] private GraphicRaycaster _graphicRaycaster;
 		[SerializeField] private Color _activeColor;
 		[SerializeField] private Color _inactiveColor;
 		[SerializeField] private Image _background;
@@ -70,7 +72,10 @@ namespace Server
 			_nextFrameButton.onClick.AddListener(OnNextFrameButton);
 			_slider.onValueChanged.AddListener(OnSliderChanged);
 			Application.targetFrameRate = _networkSettings.FrameRate;
-
+#if !UNITY_EDITOR
+			_canvasScaler.scaleFactor = 0;
+			_graphicRaycaster.enabled = false;
+#endif
 			//_modulesRunner.SetFrameRate(_networkSettings.FrameRate);
 			//_modulesRunner.Start();
 			//InternalStartTicking();

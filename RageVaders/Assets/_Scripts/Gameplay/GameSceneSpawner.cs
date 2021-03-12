@@ -37,7 +37,7 @@ namespace Gameplay
 			Vector3 position = serializablePosition.ToUnityVector();
 
 			var instance = Instantiate(obj, position, Quaternion.Euler(90, 180, 0));
-			instance.GetComponent<PhysicsBehaviour>().Init(_clientNetworkData.MyId);
+			instance.GetComponents<PhysicsBehaviour>().Each(c => c.Init(_clientNetworkData.MyId));
 			_spawnedGameEntities[_clientNetworkData.MyId] = instance.gameObject;
 		}
 
@@ -47,7 +47,7 @@ namespace Gameplay
 			WaveSpawnedRequestEvent e = arg as WaveSpawnedRequestEvent;
 			AssetReference reference = _hostileShips.FirstOrDefault(s => s.WaveVisualStyle == e.Request.WaveVisualStyle).AssetReference;
 
-			StartCoroutine(this.LoadAsync(reference, x => OnHostileShopAssetLoaded(e.Request.WaveVisualStyle, e.Request.Ships, x)));
+			StartCoroutine(this.LoadAsync(reference, x => OnHostileShipAssetLoaded(e.Request.WaveVisualStyle, e.Request.Ships, x)));
 		}
 
 		[RVRegisterEventHandler(typeof(DestroyEntityRequestEvent))]
@@ -57,7 +57,7 @@ namespace Gameplay
 			Destroy(_spawnedGameEntities[e.EntityId]);
 		}
 
-		private void OnHostileShopAssetLoaded(WaveVisualStyle visualStyle, RVHostileShip[] hostileShips, GameObject obj)
+		private void OnHostileShipAssetLoaded(WaveVisualStyle visualStyle, RVHostileShip[] hostileShips, GameObject obj)
 		{
 			for (int i = 0; i < hostileShips.Length; i++)
 			{

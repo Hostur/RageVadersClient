@@ -30,7 +30,7 @@ namespace Graphics.MVVM
       if (_parent != null) InjectViewModelFromParent();
     }
 
-    protected override void OnAwake()
+    protected override async void OnAwake()
     {
       AssertViewModelExists();  
       CacheSelectableUiElements();
@@ -43,6 +43,7 @@ namespace Graphics.MVVM
       AssignInputFieldBindings();
       AssignToggleBindings();
       AssignEnableDisableBind();
+      await ViewModel.PostInitializeAsync().ConfigureAwait(true);
     }
 
     private void AssignEnableDisableBind()
